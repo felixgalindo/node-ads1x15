@@ -428,7 +428,7 @@ ads1x15.prototype.readADCDifferential01 = function(pga, sps, callback) {
   if(!sps)
     sps=250;
 
-  return this.readADCDifferential(0, 1, pga, sps, callback);
+  return this.readADCDifferential(0, 1, pga, sps, callback);startContinuousConversion
 }
 
 
@@ -664,6 +664,8 @@ ads1x15.prototype.getLastConversionResults = function(callback) {
       {
         data =  ( (res[0] << 8) | (res[1]) ) * this.pga / 32768.0;
       }
+      
+      callback(null, data);
     }
   });
 }
